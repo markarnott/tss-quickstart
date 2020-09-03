@@ -25,6 +25,6 @@ This environment is intended for someone developing on top of the latest TSS com
 >
 > sudo ./4configure_tpm2.sh
 >
-> ./5test_tpm_tools.sh
+> ./5start_tpm2.sh
 
 
