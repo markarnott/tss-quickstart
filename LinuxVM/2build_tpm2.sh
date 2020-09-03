@@ -6,10 +6,10 @@
 # The 1get_build_tools.sh script will install packages required for compilation 
 
 
-tpm2_abrmd_ver="2.3.2"
+tpm2_abrmd_ver="2.3.3"
 #tpm2_tss_ver="2.4.2"
 tpm2_tss_ver="3.0.0"
-tpm2_tools_ver="4.1.3"
+tpm2_tools_ver="4.3.0"
 ibmtpm_sim_ver=ibmtpm1637
 ibmtpm_checksum=dd3a4c3f7724243bc9ebcd5c39bbf87b82c696d1c1241cb8e5883534f6e2e327
 
