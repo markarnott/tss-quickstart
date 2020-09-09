@@ -19,6 +19,4 @@ systemctl daemon-reload
 
 pkill -HUP dbus-daemon
 
-./tpm_serverd.sh
-systemctl start tpm2-abrmd
 
