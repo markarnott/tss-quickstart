@@ -10,7 +10,7 @@ tpm2_abrmd_ver="2.3.3"
 tpm2_tss_ver="2.4.2"
 #tpm2_tss_ver="3.0.0"
 tpm2_tools_ver="4.3.0"
-tpm2_pkcs11_ver="1.4.0"
+
 ibmtpm_sim_ver=ibmtpm1637
 ibmtpm_checksum=dd3a4c3f7724243bc9ebcd5c39bbf87b82c696d1c1241cb8e5883534f6e2e327
 
@@ -34,17 +34,13 @@ function main {
 
    get_ibm_sim $ibmtpm_sim_ver $ibmtpm_checksum
 
-   if [ $1 = "pkcs11" ] then
-      get_pkcs11 $tpm2_pkcs11_ver
-   fi
-
    popd 
 }
 
 function append_installer {
    echo ""  $INSTALL_PATH
    echo "pushd $(pwd)" >> $INSTALL_PATH
-   echo "make install" >> $INSTALL_PATH
+   echo "make install | tee install.log" >> $INSTALL_PATH
    echo "popd" >> $INSTALL_PATH
 }
 
@@ -178,32 +174,6 @@ function get_tools {
    
    make
    append_installer
-   popd
-}
-
-function get_pkcs11 {
-   file_version=$1
-
-   name="tpm2-pkcs11-$file_version"
-   if [ ! -f "$name.tar.gz" ]; then
-      dl_url="https://github.com/tpm2-software/tpm2-pkcs11/releases/download/$file_version/$name.tar.gz
-      echo
-      echo "=== getting $dl_url ==="
-      echo
-      wget --quiet --show-progress --progress=dot:giga $dl_url
-      echo
-   fi
-
-   echo
-   echo "=== extracting $name.tar.gz ==="
-   echo
-   tar xvf $name.tar.gz
-
-   echo
-   echo "=== $name is a work in progress build manually for now ==="
-   echo
-   pushd $name
-
    popd
 }
 
