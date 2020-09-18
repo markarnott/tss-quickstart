@@ -15,7 +15,7 @@ if [[ $? -eq 1 ]]; then
 fi
 
 # start the resource manager
-systemctl start tpm2-abrmd
+sudo systemctl start tpm2-abrmd
 
 # test the tss stack by running some tpm commands
 export TPM2TOOLS_TCTI="tabrmd:bus_name=com.intel.tss2.Tabrmd"

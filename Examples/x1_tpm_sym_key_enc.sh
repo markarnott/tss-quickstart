@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# create a primary context with an ECC key just because we can.  This defaults to a child of the ower heirarchy
+# create a primary context with an ECC key just because we can.  This defaults to a child of the owner heirarchy
 tpm2_createprimary -G ecc --key-context primary_x1.ctx
 
 # create generates a new AES key.

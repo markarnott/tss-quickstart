@@ -21,6 +21,7 @@ function main {
    mkdir -p workspace
    pushd workspace
 
+   # get and build tmp2-tss 
    tss_pkg_name="tpm2-tss-$tpm2_tss_ver"
    tss_dl_url="https://github.com/tpm2-software/tpm2-tss/releases/download/$tpm2_tss_ver/$tss_pkg_name.tar.gz"
    get_release $tss_pkg_name $tss_dl_url
@@ -29,6 +30,7 @@ function main {
 
    sudo -v 
 
+   # get and build tmp2-abrmd
    abrmd_pkg_name="tpm2-abrmd-$tpm2_abrmd_ver"
    abrmd_dl_url="https://github.com/tpm2-software/tpm2-abrmd/releases/download/$tpm2_abrmd_ver/$abrmd_pkg_name.tar.gz"
    get_release $abrmd_pkg_name $abrmd_dl_url
@@ -37,6 +39,7 @@ function main {
 
    sudo -v 
 
+   # get and build tmp2-tools 
    tools_pkg_name="tpm2-tools-$tpm2_tools_ver"
    tools_dl_url="https://github.com/tpm2-software/tpm2-tools/releases/download/$tpm2_tools_ver/$tools_pkg_name.tar.gz"
    get_release $tools_pkg_name $tools_dl_url
@@ -45,6 +48,7 @@ function main {
 
    sudo -v 
 
+   # get and build the ibm simulator
    sim_dl_url="https://downloads.sourceforge.net/project/ibmswtpm2/$ibmtpm_sim_ver.tar.gz"
    get_ibm_sim $ibmtpm_sim_ver $sim_dl_url $ibmtpm_checksum
 
