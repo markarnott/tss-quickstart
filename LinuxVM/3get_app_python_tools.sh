@@ -32,8 +32,10 @@ function main {
    engine_dl_url="https://github.com/tpm2-software/tpm2-tss-engine/releases/download/v$tpm2_tss_engine_ver/$engine_pkg_name.tar.gz"
    get_release $engine_pkg_name $engine_dl_url
 
-   #TODO build_component $engine_pkg_name
+   build_component $engine_pkg_name
 
+   sudo ldconfig
+   
    popd
 }
 
@@ -41,18 +43,15 @@ function get_build_pkgs {
    sudo apt -y update
 
    # dependencies for tpm2-pkcs11 => sqlite3 and libsqplite3-dev libyaml-dev
-   # dependencies for pytss => git and python3-pip
+   # dependencies for pytss => git python3-pip and swig
    # dependencies for tss-engine =>  TBD???
-   sudo apt -y install sqlite3 libsqlite3-dev libyaml-dev git python3-pip
+   sudo apt -y install sqlite3 libsqlite3-dev libyaml-dev git python3-pip swig
 }
 
 function get_pytss {
    git clone --depth 1 --recurse-submodules $1
    
-   cd tpm2-pytss
-   python3 -m pip install -e .
-
-   cd ..
+   sudo python3 -m pip install -e ./tpm2-pytss/ | tee install-tpm2-pytss.log
 }
 
 function get_release {
